@@ -20,7 +20,7 @@ public class ContatoController {
 	@Autowired
 	private ContatoRepository contatoRepository;
 		
-	
+	//listando os dados da base
 	@GetMapping("/contatos")
 	public ModelAndView index() {
 		List<Contato> contatos = this.contatoRepository.findAll();
@@ -39,19 +39,21 @@ public class ContatoController {
 		return mv;
 		
 	}
-	
+	//salvando os dados na base
 	@PostMapping("/contatos")
-	public String create(Contato contato) {
-	System.out.println("******************************");
-	System.out.println(contato);
-	this.contatoRepository.save(contato);
-	
-	/*
 	public String create(RequisicaoNovoContato requisicao ) {
 		Contato contato = requisicao.toContato() ;
-		this.contatoRepository.save(contato);*/	
+		this.contatoRepository.save(contato);
 		return "redirect:/contatos";
 	}
+	
+	/*public String create(Contato contato) {
+	System.out.println("******************************");
+	System.out.println(contato);
+	this.contatoRepository.save(contato);*/
+	
+
+	
 	
 	
 
