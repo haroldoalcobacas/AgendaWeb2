@@ -37,13 +37,13 @@
 		  
 						  <tbody>
 						    <tr th:each="contato: ${contatos}">	
-						      <th class="col-1"scope="row" th:text="${contato.getId()}"> ID </th>  
-						      <td class="col-4" th:text="${contato.nome()}"> Nome </td>
-						      <td class="col-4" th:text="${contato.fone()}"> Fone </td>
-						      <td class="col-4" th:text="${contato.statusContato.toString()}"> Tipo </td>
-						      <td class="col-1"><a href="#">Detalhar</a>
-						      <td class="col-1"><a href="#">Editar</a>
-						      <td class="col-1"><a href="#">Excluir</a>
+						      <th class="col-1"scope="row" th:text="${contato.getId()}">ID</th>  
+						      <td class="col-4" th:text="${contato.getNome()}">Nome</td>
+						      <td class="col-4" th:text="${contato.getFone()}">Fone</td>
+						      <td class="col-2" th:text="${contato.getStatusContato.toString()}">Tipo</td>
+						      <td class="col-1"><a href="#">Detalhar</a></td>
+						      <td class="col-1"><a href="#">Editar</a></td>
+						      <td class="col-1"><a href="#">Excluir</a></td>
 						    </tr>
 				 		 </tbody>
  				 </table>
@@ -53,5 +53,9 @@
   		<div class="row">
   			<a href="/contato/new">Novo Contato</a>
   		</div>
+  	</div>	
   		
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
 </html>

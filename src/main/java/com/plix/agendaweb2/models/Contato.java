@@ -2,6 +2,8 @@ package com.plix.agendaweb2.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,13 +19,12 @@ public class Contato {
 	@Column(nullable = false)
 	private String nome;
 	private String fone;
+	@Enumerated(EnumType.STRING)
 	private StatusContato statusContato;
 	
 	
 	
-	public Contato() {
-		
-			
+	public Contato() {	
 		
 	}
 
@@ -57,6 +58,14 @@ public class Contato {
 
 	public void setStatusContato(StatusContato statusContato) {
 		this.statusContato = statusContato;
+	}
+
+	@Override
+	public String toString() {
+		return "Contato [id=" + id + 
+				", nome=" + nome +
+				", fone=" + fone + 
+				", statusContato=" + statusContato + "]";
 	}
 	
 	

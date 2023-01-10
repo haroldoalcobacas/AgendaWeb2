@@ -27,7 +27,7 @@
 	<div class="container">
 		<div class="row">
 	
-			<form action="/contatos" methood="POST">
+			<form action="/contatos" method="POST">
 				
 				<div class="mb-3">
 					<label class="form-label">Nome</label>
@@ -43,7 +43,7 @@
 			
 				<div class="mb-3">
 					<label class="form-label">Tipo</label>
-					<select class="form-select" name="StatusContato">
+					<select class="form-select" name="statusContato">
 						
 				 		<option th:each="status:${statusContato}"
 								th:value="${status}" th:text="${status}"></option>
