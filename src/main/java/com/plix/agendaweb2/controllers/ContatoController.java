@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,8 @@ import com.plix.agendaweb2.dto.RequisicaoNovoContato;
 import com.plix.agendaweb2.models.Contato;
 import com.plix.agendaweb2.models.StatusContato;
 import com.plix.agendaweb2.repositories.ContatoRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ContatoController {
@@ -41,20 +44,26 @@ public class ContatoController {
 	}
 	//salvando os dados na base
 	@PostMapping("/contatos")
-	public String create(RequisicaoNovoContato requisicao ) {
-		Contato contato = requisicao.toContato() ;
-		this.contatoRepository.save(contato);
-		return "redirect:/contatos";
+	public String create(@Valid RequisicaoNovoContato requisicao, BindingResult result ) {
+		if (result.hasErrors()) {
+			System.out.println("*******************Erro********************");
+			return "redirect:/contato/new";
+		}
+		else {
+		
+			Contato contato = requisicao.toContato() ;
+			this.contatoRepository.save(contato);
+			return "redirect:/contatos";
+		}
+		
 	}
 	
+	
+}
 	/*public String create(Contato contato) {
 	System.out.println("******************************");
 	System.out.println(contato);
 	this.contatoRepository.save(contato);*/
 	
 
-	
-	
-	
 
-}

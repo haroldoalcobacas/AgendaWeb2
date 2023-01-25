@@ -3,10 +3,16 @@ package com.plix.agendaweb2.dto;
 import com.plix.agendaweb2.models.Contato;
 import com.plix.agendaweb2.models.StatusContato;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class RequisicaoNovoContato {
 
-	
+	@NotBlank
+	@NotNull
 	private String nome;
+	@NotBlank
+	@NotNull
 	private String fone;
 	private StatusContato statusContato;
 	
@@ -53,3 +59,4 @@ public class RequisicaoNovoContato {
 	
 	
 }
+
