@@ -27,28 +27,28 @@
 	<div class="container">
 		<div class="row">
 	
-			<form action="/contatos" method="POST">
+			<form th:object="${requisicaoNovoContato}" action="/contatos" method="POST">
 				
 				<div class="mb-3">
 					<label class="form-label">Nome</label>
-					<input class="form-control" type="text" name="nome">
-					<div></div>
+					<input class="form-control" th:errorclass="is-invalid"  type="text" th:field="*{nome}" >
+					<div class="invalid-feedback" th:errors="*{nome}" ></div>
 				</div>
 				
 				<div class="mb-3">
 					<label class="form-label">Fone</label>
-					<input class="form-control" type="text" name="fone">
-					<div></div>
+					<input class="form-control" th:errorclass="is-invalid"  type="text" th:field="*{fone}">
+					<div class="invalid-feedback" th:errors="*{fone}" ></div>					
 				</div>
 			
 				<div class="mb-3">
 					<label class="form-label">Tipo</label>
-					<select class="form-select" name="statusContato">
+					<select class="form-select" th:field="*{statusContato}">
 						
 				 		<option th:each="status:${statusContato}"
-								th:value="${status}" th:text="${status}"></option>
-						
+								th:value="${status}" th:text="${status}"></option>					
 					</select>
+					
 				</div>
 				
 				<button class="btn btn-primary" type="submit">Submeter</button>

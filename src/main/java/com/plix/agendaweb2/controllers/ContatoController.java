@@ -33,27 +33,29 @@ public class ContatoController {
 				 
 	}
 	
-	
-	@GetMapping("/contato/new")
-	public ModelAndView nnew() {
+	@GetMapping("/contatos/new")
+	public ModelAndView nnew(RequisicaoNovoContato requisicao) {
 		ModelAndView mv = new ModelAndView("contatos/new");
 		// criando lista de status como um objeto - statusContato
 		mv.addObject("statusContato",StatusContato.values());
 		return mv;
 		
 	}
-	//salvando os dados na base
+	
 	@PostMapping("/contatos")
-	public String create(@Valid RequisicaoNovoContato requisicao, BindingResult result ) {
+	public ModelAndView create(@Valid RequisicaoNovoContato requisicao, BindingResult result ) {
+		//System.out.println(requisicao);
 		if (result.hasErrors()) {
 			System.out.println("*******************Erro********************");
-			return "redirect:/contato/new";
+			ModelAndView mv = new ModelAndView("contatos/new");
+			mv.addObject("statusContato",StatusContato.values());
+            return mv;
 		}
 		else {
 		
 			Contato contato = requisicao.toContato() ;
 			this.contatoRepository.save(contato);
-			return "redirect:/contatos";
+			return new ModelAndView("redirect:/contatos");
 		}
 		
 	}
