@@ -40,17 +40,32 @@ public class RequisicaoNovoContato {
 		contato.setNome(this.nome);
 		contato.setFone(this.fone);
 		contato.setStatusContato(this.statusContato);
-		return contato;	
+		return contato;
+		
 	}
+	
+
 		
 	public Contato toContato(Contato contato) {	
 		contato.setNome(this.nome);
 		contato.setFone(this.fone);
 		contato.setStatusContato(this.statusContato);
-		return contato;			
-
+		return contato;		
 		
 	}
+	
+	// passar atualizações para contato
+	public void fromContato(Contato contato) {
+		this.nome = contato.getNome();
+		this.fone = contato.getFone();
+		this.statusContato = contato.getStatusContato();
+		
+	}
+	
+        
+     
+  
+
 	@Override
 	public String toString() {
 		return "RequisicaoNovoContato [nome=" + nome + ", fone=" + fone + ", statusContato=" + statusContato + "]";
